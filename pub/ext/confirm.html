@@ -1,0 +1,25 @@
+<html>
+
+<body>
+    <link rel="stylesheet" type="text/css" href="style.css">
+    <script src="/socket.io/socket.io.js"></script>
+    <script src="https://code.jquery.com/jquery-1.11.1.js"></script>
+    <script>
+        var socket = io();
+
+        function getParameterByName(name, url) {
+            if (!url) url = window.location.href;
+            name = name.replace(/[\[\]]/g, "\\$&");
+            var regex = new RegExp("[?&]" + name + "(=([^&#]*)|&|#|$)"),
+                results = regex.exec(url);
+            if (!results) return null;
+            if (!results[2]) return '';
+            return decodeURIComponent(results[2].replace(/\+/g, " "));
+        }
+        socket.emit('confirmemail', getParameterByName('id'));
+    </script>
+    <p>Confirmed your child's email</p>
+    <button onclick='window.location = "http://" + window.location.host;'>Take me back</button>
+</body>
+
+</html>

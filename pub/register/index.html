@@ -1,0 +1,45 @@
+<html>
+
+<head>
+	<!-- Compiled and minified CSS -->
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/css/materialize.min.css">
+
+</head>
+
+<body class='row'>
+	<link rel="stylesheet" type="text/css" href="style.css">
+	<script src="/socket.io/socket.io.js"></script>
+	<script src="https://code.jquery.com/jquery-1.11.1.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/js/materialize.min.js"></script>
+	<script type="text/javascript" src="main.js"></script>
+
+	<div class="row">
+		<div id="register" class='col s6'>
+			<br> Parent's E-mail Address <input id='email' type="text">
+			<br> Password <input id='password' type="password">
+			<br> Confirm password <input id='confirmpassword' type="password">
+			<a class='btn' onclick='register()'>Register</a>
+		</div>
+
+		<p id="errorm"></p>
+	</div>
+
+
+
+	<style>
+		#crest {
+			width: 150px;
+			height: 150px;
+			/*position: fixed;*/
+			left: 10;
+			top: 20px;
+		}
+
+		#drop {
+			margin-top: 10px;
+		}
+	</style>
+
+</body>
+
+</html>
