@@ -157,6 +157,13 @@ io.on('connection', function(socket) {
         syncdbwrite()
     });
 
+    socket.on('endshower', function(id, num) {
+        console.log(accounts[id]['tot'])
+        console.log(num)
+        accounts[id]['tot'] += num
+        console.log(id + ' got ' + num + '. Now at ' + accounts[id]['tot'])
+    });
+
     socket.on('getid', function(sessionid, username, password) {
         console.log('logging in')
         for (var i in accounts) {

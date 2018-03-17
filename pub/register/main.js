@@ -35,9 +35,7 @@ function register() {
         "password": hash(readbox('password')),
         "email": readbox('email'),
         "confirmedemail": false,
-        "children": {
-
-        }
+        "tot": 0
     });
 }
 
