@@ -175,7 +175,6 @@ io.on('connection', function(socket) {
             }
         }
         io.emit('loginreturn', sessionid, 'login failed')
-        //cant explain, don't know
     });
 
 });
