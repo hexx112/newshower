@@ -33,9 +33,24 @@ socket.on('root', function(notyoursessionid) {
   }
 });
 
+socket.on('getstatsreturn', function(notyoursessionid, data){
+  if (sessionid == notyoursessionid){
+    $("#stats").html('Total coins: ' + data['tot'] + '<i class="material-icons small">attach_money</i>' + '<br> Best score: ' + data['best']);
+  }
+});
+
 function send(num){
   socket.emit('endshower', id, num);
 }
+
+function getstats(){
+  socket.emit('getstats', sessionid, id)
+}
+
+function gotostats(){
+  window.location.href = 'stats.html?uid=' + id
+}
+
 //////////
 
 var num = 500;
@@ -44,6 +59,7 @@ var intervalID;
 
 window.onload = function() {
   $("#count").html(num);
+  getstats()
 };
 
 function start() {
@@ -63,6 +79,7 @@ function end() {
   $( "#count" ).prepend( "You got: " );
 
   send(num)
+  getstats()
 }
 
 function showerticker() {

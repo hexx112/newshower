@@ -41,16 +41,6 @@ function bootup() {
 var accounts = bootup()
 
 /////////////////////////
-function readpass() {
-    var fs = require('fs')
-    var filename = 'password.txt'
-    fs.readFile(filename, 'utf8', function(err, data) {
-        if (err) throw err;
-        console.log('pass is ' + data + ', right?')
-        return data
-    });
-}
-
 function guid() {
     function s4() {
         return Math.floor((1 + Math.random()) * 0x10000)
@@ -81,7 +71,7 @@ function confirmmail(adress, childusername) {
     var mailOptions = {
         from: 'cronjab@gmail.com',
         to: adress,
-        subject: "Confirm your child's online report account creation",
+        subject: "Confirm your account creation",
         text: 'http://localhost:3000/ext/confirm.html?id=' + childusername,
         html: '<a href="' + 'http://localhost:3000/ext/confirm.html?id=' + childusername + '">Confirm your account</a>'
     };
@@ -99,32 +89,7 @@ function cap(text) {
     return text.charAt(0).toUpperCase() + text.slice(1);
 }
 
-function alertchild(email, name) {
-    var transporter = nodemailer.createTransport({
-        service: 'gmail',
-        auth: {
-            user: 'cronjab@gmail.com',
-            pass: "cronjabber"
-        }
-    });
-
-    var mailOptions = {
-        from: 'cronjab@gmail.com',
-        to: email,
-        subject: cap(name + ", a parent has just added you to their list."),
-        text: cap(name + ', a parent has just added you to their list. If this was not you or your parent, seek help immediately.'),
-        html: cap(name + ', a parent has just added you to their list. If this was not you or your parent, seek help immediately.')
-    };
-
-    transporter.sendMail(mailOptions, function(error, info) {
-        if (error) {
-            console.log(error);
-        } else {
-            console.log('Email sent: ' + info.response);
-        }
-    });
-}
-
+//legacy function
 function DBsearch(childusername) {
     return accounts[childusername]
 }
@@ -162,6 +127,14 @@ io.on('connection', function(socket) {
         console.log(num)
         accounts[id]['tot'] += num
         console.log(id + ' got ' + num + '. Now at ' + accounts[id]['tot'])
+
+        if(accounts[id]['best'] < num){
+          accounts[id]['best'] = num;
+        }
+    });
+
+    socket.on('getstats', function(sessionid, id) {
+        io.emit('getstatsreturn', sessionid, accounts[id])
     });
 
     socket.on('getid', function(sessionid, username, password) {

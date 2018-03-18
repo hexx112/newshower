@@ -25,6 +25,12 @@ function readbox(id) {
 function errorm(message){
     $('#errorm').text(message)
 }
+
+function date(){
+  var d = new Date();
+  return d.getFullYear() + '/' + String(d.getMonth() + 1) + '/' + d.getDate()
+}
+
 function register() {
     var id = guid()
     if(readbox('password') != readbox('confirmpassword')){
@@ -35,7 +41,11 @@ function register() {
         "password": hash(readbox('password')),
         "email": readbox('email'),
         "confirmedemail": false,
-        "tot": 0
+        "tot": 0,
+        "best": 0,
+        "achievements":[
+          date() + ': Created account'
+        ]
     });
 }
 

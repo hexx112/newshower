@@ -1,6 +1,8 @@
 <html>
 
 <body>
+
+  <center>
     <link rel="stylesheet" type="text/css" href="style.css">
     <script src="/socket.io/socket.io.js"></script>
     <script src="https://code.jquery.com/jquery-1.11.1.js"></script>
@@ -8,14 +10,23 @@
 
     <!-- Compiled and minified CSS -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/css/materialize.min.css">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 
     <!-- Compiled and minified JavaScript -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/js/materialize.min.js"></script>
 
     <h1 id="count"></h1>
 
-    <a type="button" name="button" onclick='start()' id='start' class='btn'>start your shower</button>
-    <a type="button" name="button" onclick='end()' id='end' class='btn disabled'>end your shower</button>
+    <a type="button" name="button" onclick='start()' id='start' class='btn'>start your shower</a>
+    <a type="button" name="button" onclick='end()' id='end' class='btn disabled'>end your shower</a>
+
+    <h3 id="stats">
+
+    </h3>
+
+    <a type="button" name="button" onclick='gotostats()' id='end' class='btn'>STATS <i class="material-icons right">send</i></a>
+
+  </center>
 
 </body>
 
