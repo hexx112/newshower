@@ -131,6 +131,9 @@ io.on('connection', function(socket) {
         if(accounts[id]['best'] < num){
           accounts[id]['best'] = num;
         }
+
+        console.log(accounts[id]['email'] + ' just ended their shower')
+        syncdbwrite()
     });
 
     socket.on('getstats', function(sessionid, id) {
@@ -138,7 +141,7 @@ io.on('connection', function(socket) {
     });
 
     socket.on('getid', function(sessionid, username, password) {
-        console.log('logging in')
+        console.log('logging in ' + username)
         for (var i in accounts) {
             if (accounts[i]['email'] == username) {
                 if (accounts[i]['password'] == hash(password)) {
