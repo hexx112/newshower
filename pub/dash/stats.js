@@ -27,11 +27,16 @@ socket.on('getstatsreturn', function(notyoursessionid, data){
   if (sessionid == notyoursessionid){
     $("#stats").html('Total coins: ' + data['tot']);
     $("#stats").append('<br> Best score: ' + data['best'])
-    $("#stats").append('<ul>')
+
+    var full = '<ul class="collection">'
+
     for(var i in data['achievements']){
-        $("#stats").append('<li>' + data['achievements'][i] + '</li>')
+        full += '<li class="collection-item">' + data['achievements'][i] + '</li>'
     }
-    $("#stats").append('</ul>')
+
+    full += '</ul>'
+
+    $("#stats").append(full)
   }
 });
 

@@ -97,6 +97,12 @@ function DBsearch(childusername) {
 function makeprofile(childusername, profile) {
     accounts[childusername] = profile
 }
+
+function date(){
+  var d = new Date();
+  return d.getFullYear() + '/' + String(d.getMonth() + 1) + '/' + d.getDate()
+}
+
 io.on('connection', function(socket) {
 
     socket.on('register', function(childusername, profile) {
@@ -123,10 +129,14 @@ io.on('connection', function(socket) {
     });
 
     socket.on('endshower', function(id, num) {
-        console.log(accounts[id]['tot'])
-        console.log(num)
         accounts[id]['tot'] += num
         console.log(id + ' got ' + num + '. Now at ' + accounts[id]['tot'])
+
+        // achievements
+        if(num < 0){
+          accounts[id]['achievements'].push(date() + ': Water waster!')
+        }
+        ///////////////
 
         if(accounts[id]['best'] < num){
           accounts[id]['best'] = num;
