@@ -53,7 +53,7 @@ function gotostats(){
 
 //////////
 
-var num = 5;
+var num = 500;
 var orgnum = num;
 var intervalID;
 

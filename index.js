@@ -136,6 +136,18 @@ io.on('connection', function(socket) {
         if(num < 0){
           accounts[id]['achievements'].push(date() + ': Water waster!')
         }
+
+        if(num > 200){
+          accounts[id]['achievements'].push(date() + ': Super quick shower')
+        }
+
+        if(num == 0){
+          accounts[id]['achievements'].push(date() + ': Average shower')
+        }
+
+        if(num == 123){
+          accounts[id]['achievements'].push(date() + ': Rarity badge')
+        }
         ///////////////
 
         if(accounts[id]['best'] < num){
@@ -161,6 +173,10 @@ io.on('connection', function(socket) {
             }
         }
         io.emit('loginreturn', sessionid, 'login failed')
+    });
+
+    socket.on('admin', function() {
+        io.emit('adminreturn', accounts);
     });
 
 });
