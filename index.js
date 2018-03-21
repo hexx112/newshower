@@ -150,6 +150,11 @@ io.on('connection', function(socket) {
         }
         ///////////////
 
+        // append to graph
+        var d = new Date()
+        accounts[id]['showers'].push([d.getTime(), num])
+        console.log('appended ' + [d.getTime(), num] + ' to ' + id + '\'s account')
+
         if(accounts[id]['best'] < num){
           accounts[id]['best'] = num;
         }

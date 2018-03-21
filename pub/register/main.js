@@ -45,6 +45,9 @@ function register() {
         "best": 0,
         "achievements":[
           date() + ': Created account'
+        ],
+        "showers":[
+          
         ]
     });
 }
