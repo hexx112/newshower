@@ -1,34 +1,54 @@
 <html>
 
 <body>
-
-  <center>
-    <link rel="stylesheet" type="text/css" href="style.css">
     <script src="/socket.io/socket.io.js"></script>
     <script src="https://code.jquery.com/jquery-1.11.1.js"></script>
-    <script src='main.js'></script>
-
     <!-- Compiled and minified CSS -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/css/materialize.min.css">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-
     <!-- Compiled and minified JavaScript -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/js/materialize.min.js"></script>
 
-    <h1>ShowerNode</h1>
-    <h2>v2.0.0</h2>
 
-    <a href="login" class='btn'>I have an account <i class="material-icons right">send</i></a>
-    <a href="register" class='btn'>I do not have an account <i class="material-icons right">send</i></a>
+    <div class="page1">
+        <h1>ShowerNode</h1>
+        <h2>v2.0.0</h2>
 
-    <br><br><br><br>
+        <p>Helping save the environment. One step at a time.</p>
 
-    <a href="info" class='btn'>What is this?</a>
+        <a class='btn scroll1'>down</a>
+        <script src='main.js'></script>
+    </div>
+    <div class="page2">
+        <div class="left col s6">
+            <a href="login" class='btn'>I have an account</a>
+            <a href="register" class='btn'>I do not have an account</a>
+        </div>
+        <div class="right col s6">
+            <a href="info" class='btn'>What is this?</a>
+        </div>
+    </div>
 
-    <br>
-    // this will eventually look a lot nicer
+    <style media="screen">
+        .page1,
+        .page2,
+        .right,
+        .left {
+            height: 100%;
+            text-align: center;
+        }
 
-  </center>
+        .right {
+            width: 50%;
+            background-color: red;
+        }
+
+        .left {
+            width: 50%;
+            background-color: blue;
+        }
+    </style>
+
 
 </body>
 
