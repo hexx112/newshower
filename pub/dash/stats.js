@@ -19,17 +19,17 @@ function getParameterByName(name, url) {
   return decodeURIComponent(results[2].replace(/\+/g, " "));
 }
 
-function constructgraph(showers){
+function constructgraph(showers) {
   console.log(showers)
 
-  var ctx = document.getElementById("myChart").getContext('2d');
+  var ctx = document.getElementById("showerlength").getContext('2d');
 
   var data = [];
-  for(var i in showers){
+  for (var i in showers) {
     data.push(showers[i][1])
   }
   var labels = [];
-  for(var i in showers){
+  for (var i in showers) {
     labels.push(showers[i][0])
   }
 
@@ -78,15 +78,15 @@ function constructgraph(showers){
 var id = getParameterByName('uid')
 var sessionid = guid();
 
-socket.on('getstatsreturn', function(notyoursessionid, data){
-  if (sessionid == notyoursessionid){
+socket.on('getstatsreturn', function(notyoursessionid, data) {
+  if (sessionid == notyoursessionid) {
     $("#stats").html('Total coins: ' + data['tot']);
     $("#stats").append('<br> Best score: ' + data['best'])
 
     var full = '<ul class="collection">'
 
-    for(var i in data['achievements']){
-        full += '<li class="collection-item">' + data['achievements'][i] + '</li>'
+    for (var i in data['achievements']) {
+      full += '<li class="collection-item">' + data['achievements'][i] + '</li>'
     }
 
     full += '</ul>'
@@ -97,11 +97,11 @@ socket.on('getstatsreturn', function(notyoursessionid, data){
   }
 });
 
-function send(num){
+function send(num) {
   socket.emit('endshower', id, num);
 }
 
-function getstats(){
+function getstats() {
   socket.emit('getstats', sessionid, id)
 }
 
