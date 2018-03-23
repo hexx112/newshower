@@ -9,41 +9,51 @@
     <!-- Compiled and minified JavaScript -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/js/materialize.min.js"></script>
 
+    <div class="team row">
+
+    </div>
+
     <style media="screen">
         * {
-            padding: 10px;
+            padding: 2px;
         }
     </style>
 
     <script type="text/javascript">
-        String.prototype.format = function() {
-            var i = 0,
-                args = arguments;
-            return this.replace(/{}/g, function() {
-                return typeof args[i] != 'undefined' ? args[i++] : '';
-            });
-        };
+        function shuffle(a) {
+            for (let i = a.length - 1; i > 0; i--) {
+                const j = Math.floor(Math.random() * (i + 1));
+                [a[i], a[j]] = [a[j], a[i]];
+            }
+            return a;
+        }
 
-        var html =
-            `
-        <div class="team">
-            <div class="card row valign-wrapper">
-                <div class="col s2 center-on-small-only">
-                    <div class="image-container">
-                        <img class='circle' src="images/{}.jpg" onload="this.width/=2;">
-                    </div>
-                </div>
-                <div class="col s10">
-                    <h4>{}</h4>
-                </div>
-            </div>
-        </div>
-        `;
-
-        var team = [['Lewis Carson', 'lewis'], ['Isaac Mcilwrath', 'lewis']]
+        var team = [
+            ['Lewis Carson', 'lewis', 'Hi! I made the website.'],
+            ['Isaac Mcilwrath', 'lewis', 'I worked on the robot'],
+            ['Orla McMahon', 'lewis', 'I worked on the robot'],
+            ['Reuben Coupe', 'lewis', 'I worked on the robot'],
+            ['Jack Moore', 'lewis', 'I worked on the robot'],
+            ['Mrs Hunter', 'lewis', 'I worked on the robot']
+        ]
+        team = shuffle(team)
 
         for (var i in team) {
-            document.body.innerHTML += html.format(team[i][1], team[i][0])
+            var html =
+                `
+                <div class="card row valign-wrapper col s6">
+                    <div class="col s2 center-on-small-only">
+                        <div class="image-container">
+                            <img class='circle' src="images/${team[i][1]}.jpg" onload="this.width/=2;">
+                        </div>
+                    </div>
+                    <div class="col s10">
+                        <h4>${team[i][0]}</h4>
+                        <p>${team[i][2]}</p>
+                    </div>
+                </div>
+            `;
+            document.body.innerHTML += html
         }
     </script>
 
