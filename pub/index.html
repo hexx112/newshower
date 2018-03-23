@@ -11,28 +11,52 @@
 
 
     <div class="page1">
-        <h1>ShowerNode</h1>
-        <h2>v2.0.0</h2>
+        <div class="page1-inner">
+            <h1>SiM</h1>
+            <h2>v2.0.0</h2>
 
-        <p>Helping save the environment. One step at a time.</p>
+            <p>Helping save the environment. One step at a time.</p>
 
-        <a class='btn scroll1'>down</a>
+            <a class="btn-floating btn-large waves-effect waves-light scroll1"><i class="material-icons">arrow_downward</i></a>
+        </div>
     </div>
     <div class="page2">
         <div class="left col s6">
             <div class="left-inner">
-                <a href="login" class='btn'>I have an account</a>
-                <a href="register" class='btn'>I do not have an account</a>
+                <a href="login" class="btn-floating btn-large waves-effect waves-light"><i class="material-icons">arrow_back</i></a>
+                <br>
+                <p>I have an account</p>
+                <br><br>
+                <a href="register" class="btn-floating btn-large waves-effect waves-light"><i class="material-icons">arrow_back</i></a>
+                <br>
+                <p>I do not have an account</p>
             </div>
         </div>
         <div class="right col s6">
             <div class="right-inner">
-                <a href="info" class='btn'>What is this?</a>
+                <a href="info" class="btn-floating btn-large waves-effect waves-light"><i class="material-icons">arrow_forward</i></a>
+                <br>
+                <p>What is this?</p>
+                <br><br>
+                <a href="team" class="btn-floating btn-large waves-effect waves-light"><i class="material-icons">arrow_forward</i></a>
+                <br>
+                <p>Meet the team</p>
             </div>
         </div>
     </div>
 
     <style media="screen">
+        .page1 {
+            position: relative;
+        }
+
+        .page1-inner {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+        }
+
         .page1,
         .page2,
         .right,
@@ -44,7 +68,7 @@
         .right,
         .left {
             width: 50%;
-            line-height: 50%;
+            /*line-height: 50%;*/
             position: relative;
         }
 
@@ -66,7 +90,12 @@
             transition: all 1s ease-in-out;
         }
 
-        html, body {margin: 0; height: 100%; overflow: hidden}
+        html,
+        body {
+            margin: 0;
+            height: 100%;
+            overflow: hidden
+        }
     </style>
 
     <script src='main.js'></script>
