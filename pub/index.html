@@ -20,11 +20,15 @@
     </div>
     <div class="page2">
         <div class="left col s6">
-            <a href="login" class='btn'>I have an account</a>
-            <a href="register" class='btn'>I do not have an account</a>
+            <div class="left-inner">
+                <a href="login" class='btn'>I have an account</a>
+                <a href="register" class='btn'>I do not have an account</a>
+            </div>
         </div>
         <div class="right col s6">
-            <a href="info" class='btn'>What is this?</a>
+            <div class="right-inner">
+                <a href="info" class='btn'>What is this?</a>
+            </div>
         </div>
     </div>
 
@@ -37,16 +41,29 @@
             text-align: center;
         }
 
-        .right {
-            width: 50%;
-            background-color: red;
-            line-height: 50%;
-        }
-
+        .right,
         .left {
             width: 50%;
-            background-color: blue;
             line-height: 50%;
+            position: relative;
+        }
+
+        .right-inner,
+        .left-inner {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+        }
+
+        .right:hover,
+        .left:hover {
+            background-color: #eeeeee;
+
+            -webkit-transition: all 1s ease-in-out;
+            -moz-transition: all 1s ease-in-out;
+            -o-transition: all 1s ease-in-out;
+            transition: all 1s ease-in-out;
         }
     </style>
 
