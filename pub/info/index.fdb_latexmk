@@ -20,10 +20,10 @@
   "index.aux" 1521837277 229 b8ccceb9e578cbcc89aabb10f5b4aa66 ""
   "index.tex" 1521837041 529 1fe69459784f20cf29b88fb43ed04039 ""
   (generated)
+  "index.log"
   "index.dvi"
   "index.aux"
-  "index.log"
-["pdflatex"] 1521843713 "index.tex" "index.pdf" "index" 1521843737
+["pdflatex"] 1521843713 "index.tex" "index.pdf" "index" 1521930242
   "/usr/share/texmf-dist/fonts/map/fontname/texfonts.map" 1520157216 3332 103109f5612ad95229751940c61aada0 ""
   "/usr/share/texmf-dist/fonts/tfm/public/cm/cmbx12.tfm" 1520157226 1324 c910af8c371558dc20f2d7822f66fe64 ""
   "/usr/share/texmf-dist/fonts/tfm/public/cm/cmmi12.tfm" 1520157226 1524 4414a8315f39513458b80dfc63bff03a ""
@@ -54,6 +54,6 @@
   "index.aux" 1521843714 607 39fc189e22e726161c5582faa62d10eb ""
   "index.tex" 1521843726 2899 7cccfe079a61d1ae2ea5f2c78c8d28e2 ""
   (generated)
-  "index.aux"
   "index.log"
+  "index.aux"
   "index.pdf"

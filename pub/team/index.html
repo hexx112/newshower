@@ -29,19 +29,25 @@
         }
 
         var team = [
-            ['Lewis Carson', 'lewis', 'Hi! I made the website.'],
-            ['Isaac Mcilwrath', 'lewis', 'I worked on the robot'],
-            ['Orla McMahon', 'lewis', 'I worked on the robot'],
-            ['Reuben Coupe', 'lewis', 'I worked on the robot'],
-            ['Jack Moore', 'lewis', 'I worked on the robot'],
-            ['Mrs Hunter', 'lewis', 'I worked on the robot']
+            ['Lewis Carson', 'lewis', 'The laws of robotics don\'t apply to me'],
+            ['Isaac Mcilwrath', 'lewis', 'Just stick it on and it will work.'],
+            ['Orla McMahon', 'lewis', 'Why am I the only girl here?'],
+            ['Reuben Coupe', 'lewis', 'Have a seat.'],
+            ['Jack Moore', 'lewis', 'Kool'],
+            ['Mrs Hunter', 'lewis', ''],
+            ['Jack Clydesdale', 'lewis', 'Set it up right.'],
+            ['Ben Clydesdale', 'lewis', ''],
+            ['Andrew Li', 'lewis', 'Go program it'],
+            ['Finn Brennan', 'lewis', ''],
+            ['Finn McAlinden', 'lewis', ''],
+            ['Jonathan Miller', 'lewis', '']
         ]
         team = shuffle(team)
 
         for (var i in team) {
             var html =
                 `
-                <div class="card row valign-wrapper col s6">
+                <div class="card row valign-wrapper">
                     <div class="col s2 center-on-small-only">
                         <div class="image-container">
                             <img class='circle' src="images/${team[i][1]}.jpg" onload="this.width/=2;">
@@ -49,7 +55,7 @@
                     </div>
                     <div class="col s10">
                         <h4>${team[i][0]}</h4>
-                        <p>${team[i][2]}</p>
+                        <p>"${team[i][2]}"</p>
                     </div>
                 </div>
             `;
