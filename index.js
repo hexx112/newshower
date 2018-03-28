@@ -145,7 +145,6 @@ io.on('connection', function(socket) {
             var str = date() + ': Super quick shower'
             var parse = (str).split(' ');
             delete parse[0]
-            console.log(newachievements + '        ' + parse.join())
             if (newachievements.includes(parse.join()) == false) {
                 accounts[id]['achievements'].push(str)
             }
@@ -155,7 +154,6 @@ io.on('connection', function(socket) {
             var str = date() + ': Super quick shower'
             var parse = (str).split(' ');
             delete parse[0]
-            console.log(newachievements + '        ' + parse.join())
             if (newachievements.includes(parse.join()) == false) {
                 accounts[id]['achievements'].push(str)
             }
@@ -165,7 +163,6 @@ io.on('connection', function(socket) {
             var str = date() + ': Average shower';
             var parse = (str).split(' ');
             delete parse[0]
-            console.log(newachievements + '        ' + parse.join())
             if (newachievements.includes(parse.join()) == false) {
                 accounts[id]['achievements'].push(str)
             }
@@ -175,9 +172,21 @@ io.on('connection', function(socket) {
             var str = date() + ': Rarity badge';
             var parse = (str).split(' ');
             delete parse[0]
-            console.log(newachievements + '        ' + parse.join())
             if (newachievements.includes(parse.join()) == false) {
                 accounts[id]['achievements'].push(str)
+            }
+        }
+
+        //ranks
+        var ranks = [['Apprentice', 1000], ['Professional', 5000], ['Master', 10000]]
+        for(var i in ranks){
+            if (accounts[id]['tot'] > ranks[i][1]) {
+                var str = date() + ': ' + ranks[i][0] + ' saver';
+                var parse = (str).split(' ');
+                delete parse[0]
+                if (newachievements.includes(parse.join()) == false) {
+                    accounts[id]['achievements'].push(str)
+                }
             }
         }
 

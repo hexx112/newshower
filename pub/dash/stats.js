@@ -81,7 +81,7 @@ var sessionid = guid();
 socket.on('getstatsreturn', function(notyoursessionid, data) {
   if (sessionid == notyoursessionid) {
     $("#stats").html('Total coins: ' + data['tot']);
-    $("#stats").append('<br> Best score: ' + data['best'])
+    $("#stats").append('<br> Total score: ' + data['best'])
 
     var full = '<ul class="collection">'
 

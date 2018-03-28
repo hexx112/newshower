@@ -35,7 +35,7 @@ socket.on('root', function(notyoursessionid) {
 
 socket.on('getstatsreturn', function(notyoursessionid, data){
   if (sessionid == notyoursessionid){
-    $("#stats").html('Total coins: ' + data['tot'] + '<i class="material-icons small">attach_money</i>' + '<br> Best score: ' + data['best']);
+    $("#stats").html('Total score: ' + data['tot'] + '<br> Best score: ' + data['best']);
   }
 });
 
