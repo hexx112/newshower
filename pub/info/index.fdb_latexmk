@@ -20,10 +20,10 @@
   "index.aux" 1521837277 229 b8ccceb9e578cbcc89aabb10f5b4aa66 ""
   "index.tex" 1521837041 529 1fe69459784f20cf29b88fb43ed04039 ""
   (generated)
-  "index.log"
   "index.dvi"
   "index.aux"
-["pdflatex"] 1521843713 "index.tex" "index.pdf" "index" 1522138639
+  "index.log"
+["pdflatex"] 1522446617 "index.tex" "index.pdf" "index" 1522446617
   "/usr/share/texmf-dist/fonts/map/fontname/texfonts.map" 1520157216 3332 103109f5612ad95229751940c61aada0 ""
   "/usr/share/texmf-dist/fonts/tfm/public/cm/cmbx12.tfm" 1520157226 1324 c910af8c371558dc20f2d7822f66fe64 ""
   "/usr/share/texmf-dist/fonts/tfm/public/cm/cmmi12.tfm" 1520157226 1524 4414a8315f39513458b80dfc63bff03a ""
@@ -36,11 +36,6 @@
   "/usr/share/texmf-dist/fonts/tfm/public/cm/cmsy10.tfm" 1520157226 1124 6c73e740cf17375f03eec0ee63599741 ""
   "/usr/share/texmf-dist/fonts/tfm/public/cm/cmsy6.tfm" 1520157226 1116 933a60c408fc0a863a92debe84b2d294 ""
   "/usr/share/texmf-dist/fonts/tfm/public/cm/cmsy8.tfm" 1520157226 1120 8b7d695260f3cff42e636090a8002094 ""
-  "/usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb" 1520157214 32080 340ef9bf63678554ee606688e7b5339d ""
-  "/usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb" 1520157213 35752 024fb6c41858982481f6968b5fc26508 ""
-  "/usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb" 1520157213 32722 d7379af29a190c3f453aba36302ff5a9 ""
-  "/usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmr17.pfb" 1520157213 32362 179c33bbf43f19adbb3825bb4e36e57a ""
-  "/usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb" 1520157213 32569 5e5ddc8df908dea60932f3c484a54c0d ""
   "/usr/share/texmf-dist/tex/latex/base/article.cls" 1520157233 19821 310da678527a7dfe2a02c88af38079b7 ""
   "/usr/share/texmf-dist/tex/latex/base/omscmr.fd" 1520157233 2256 80ce1168fb4ce6a85583a9cf8972c013 ""
   "/usr/share/texmf-dist/tex/latex/base/size10.clo" 1520157232 8292 e897c12e1e886ce77fe26afc5d470886 ""
@@ -51,9 +46,9 @@
   "/usr/share/texmf-dist/web2c/texmf.cnf" 1520157258 32585 d82bbcf7626b7842c87671687479e852 ""
   "/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map" 1521302632 334148 1b9d30ff8c861d6082e3e9bfccd8d7eb ""
   "/var/lib/texmf/web2c/pdftex/pdflatex.fmt" 1521302618 7738161 b6041a3073dea75333c4ee01ac41d0d8 ""
-  "index.aux" 1521843714 607 39fc189e22e726161c5582faa62d10eb ""
-  "index.tex" 1521843726 2899 7cccfe079a61d1ae2ea5f2c78c8d28e2 ""
+  "index.aux" 1522446616 607 af7506dd0cf9af96d7a61b9bf993934f ""
+  "index.tex" 1522445399 2938 2a8da29265608cf6b205209e1a566a36 ""
   (generated)
-  "index.aux"
   "index.pdf"
   "index.log"
+  "index.aux"

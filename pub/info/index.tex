@@ -4,7 +4,7 @@
 
 \begin{document}
 
-\title{SiM v2.0.0}
+\title{SiM v2.0.3}
 \author{Lewis Carson}
 
 \maketitle
@@ -17,7 +17,7 @@ We have used a number of technologies including but not limited to:
 
 \begin{itemize}
     \item node.js (primarily)
-    \item nodemailer
+    \item nodemaile (to send confirmation emails)
     \item express
     \item socket.io
     \item materialize
@@ -44,11 +44,10 @@ function guid() {
 \end{lstlisting}
 \end{minipage}
 
-Next it checks for duplicate passwords. If it detects that they are not the same, it displays an error message and exits the function.
+Next it checks for duplicate passwords. If it detects that they are not the same, it displays an error message and exits the function gracefully.
 
 \begin{minipage}{\linewidth}
 \begin{lstlisting}
-
 if(readbox('password') != readbox('confirmpassword')){
     errorm('Passwords do not match')
     return

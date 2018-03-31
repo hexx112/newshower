@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.18 (TeX Live 2017/Arch Linux) (preloaded format=pdflatex 2018.3.17)  23 MAR 2018 22:21
+This is pdfTeX, Version 3.14159265-2.6-1.40.18 (TeX Live 2017/Arch Linux) (preloaded format=pdflatex 2018.3.17)  30 MAR 2018 22:50
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -96,29 +96,7 @@ Overfull \hbox (15.0pt too wide) in paragraph at lines 33--46
 
 [1
 
-{/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map}]
-Overfull \hbox (15.0pt too wide) in paragraph at lines 49--58
-[]$[]$ 
- []
-
-[2] [3] (./index.aux) ) 
-Here is how much of TeX's memory you used:
- 1464 strings out of 492982
- 20565 string characters out of 6138579
- 82584 words of memory out of 5000000
- 5087 multiletter control sequences out of 15000+600000
- 7587 words of font info for 27 fonts, out of 8000000 for 9000
- 1141 hyphenation exceptions out of 8191
- 26i,6n,32p,348b,908s stack positions out of 5000i,500n,10000p,200000b,80000s
-</usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cm
-bx12.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/
-share/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb></usr/share/texmf-dis
-t/fonts/type1/public/amsfonts/cm/cmr17.pfb></usr/share/texmf-dist/fonts/type1/p
-ublic/amsfonts/cm/cmsy10.pfb>
-Output written on index.pdf (3 pages, 63672 bytes).
-PDF statistics:
- 34 PDF objects out of 1000 (max. 8388607)
- 23 compressed objects within 1 object stream
- 0 named destinations out of 1000 (max. 500000)
- 1 words of extra memory for PDF output out of 10000 (max. 10000000)
-
+{/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map
+!pdfTeX error: pdflatex (file /var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map
+): fflush() failed (Input/output error)
+ ==> Fatal error occurred, no output PDF file produced!
