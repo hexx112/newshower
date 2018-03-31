@@ -16,6 +16,16 @@ server.listen(port, function() {
 // Routing
 app.use(express.static(path.join(__dirname, 'pub/')));
 
+function getParameterByName(name, url) {
+    if (!url) url = window.location.href;
+    name = name.replace(/[\[\]]/g, "\\$&");
+    var regex = new RegExp("[?&]" + name + "(=([^&#]*)|&|#|$)"),
+        results = regex.exec(url);
+    if (!results) return null;
+    if (!results[2]) return '';
+    return decodeURIComponent(results[2].replace(/\+/g, " "));
+}
+
 var accounts = {};
 
 // sync db write
@@ -103,6 +113,86 @@ function date() {
     return d.getFullYear() + '/' + String(d.getMonth() + 1) + '/' + d.getDate()
 }
 
+function regshower(id, num) {
+    accounts[id]['tot'] += num
+    console.log(id + ' got ' + num + '. Now at ' + accounts[id]['tot'])
+
+    var newachievements = []
+    for (var i in accounts[id]['achievements']) {
+        var parse = accounts[id]['achievements'][i].split(' ');
+        delete parse[0]
+        newachievements.push(parse.join())
+    }
+
+    // achievements
+    if (num < 0) {
+        accounts[id]['achievements'].push(date() + ': Water waster!')
+        var str = date() + ': Super quick shower'
+        var parse = (str).split(' ');
+        delete parse[0]
+        if (newachievements.includes(parse.join()) == false) {
+            accounts[id]['achievements'].push(str)
+        }
+    }
+
+    if (num > 200) {
+        var str = date() + ': Super quick shower'
+        var parse = (str).split(' ');
+        delete parse[0]
+        if (newachievements.includes(parse.join()) == false) {
+            accounts[id]['achievements'].push(str)
+        }
+    }
+
+    if (num == 0) {
+        var str = date() + ': Average shower';
+        var parse = (str).split(' ');
+        delete parse[0]
+        if (newachievements.includes(parse.join()) == false) {
+            accounts[id]['achievements'].push(str)
+        }
+    }
+
+    if (num == 123) {
+        var str = date() + ': Rarity badge';
+        var parse = (str).split(' ');
+        delete parse[0]
+        if (newachievements.includes(parse.join()) == false) {
+            accounts[id]['achievements'].push(str)
+        }
+    }
+
+    //ranks
+    var ranks = [
+        ['Apprentice', 1000],
+        ['Professional', 5000],
+        ['Master', 10000]
+    ]
+    for (var i in ranks) {
+        if (accounts[id]['tot'] > ranks[i][1]) {
+            var str = date() + ': ' + ranks[i][0] + ' saver';
+            var parse = (str).split(' ');
+            delete parse[0]
+            if (newachievements.includes(parse.join()) == false) {
+                accounts[id]['achievements'].push(str)
+            }
+        }
+    }
+
+    ///////////////
+
+    // append to graph
+    var d = new Date()
+    accounts[id]['showers'].push([date(), num])
+    console.log('appended ' + [date(), num] + ' to ' + id + '\'s account')
+
+    if (accounts[id]['best'] < num) {
+        accounts[id]['best'] = num;
+    }
+
+    console.log(accounts[id]['email'] + ' just ended their shower')
+}
+
 io.on('connection', function(socket) {
 
     socket.on('register', function(childusername, profile) {
@@ -129,79 +219,7 @@ io.on('connection', function(socket) {
     });
 
     socket.on('endshower', function(id, num) {
-        accounts[id]['tot'] += num
-        console.log(id + ' got ' + num + '. Now at ' + accounts[id]['tot'])
-
-        var newachievements = []
-        for (var i in accounts[id]['achievements']) {
-            var parse = accounts[id]['achievements'][i].split(' ');
-            delete parse[0]
-            newachievements.push(parse.join())
-        }
-
-        // achievements
-        if (num < 0) {
-            accounts[id]['achievements'].push(date() + ': Water waster!')
-            var str = date() + ': Super quick shower'
-            var parse = (str).split(' ');
-            delete parse[0]
-            if (newachievements.includes(parse.join()) == false) {
-                accounts[id]['achievements'].push(str)
-            }
-        }
-
-        if (num > 200) {
-            var str = date() + ': Super quick shower'
-            var parse = (str).split(' ');
-            delete parse[0]
-            if (newachievements.includes(parse.join()) == false) {
-                accounts[id]['achievements'].push(str)
-            }
-        }
-
-        if (num == 0) {
-            var str = date() + ': Average shower';
-            var parse = (str).split(' ');
-            delete parse[0]
-            if (newachievements.includes(parse.join()) == false) {
-                accounts[id]['achievements'].push(str)
-            }
-        }
-
-        if (num == 123) {
-            var str = date() + ': Rarity badge';
-            var parse = (str).split(' ');
-            delete parse[0]
-            if (newachievements.includes(parse.join()) == false) {
-                accounts[id]['achievements'].push(str)
-            }
-        }
-
-        //ranks
-        var ranks = [['Apprentice', 1000], ['Professional', 5000], ['Master', 10000]]
-        for(var i in ranks){
-            if (accounts[id]['tot'] > ranks[i][1]) {
-                var str = date() + ': ' + ranks[i][0] + ' saver';
-                var parse = (str).split(' ');
-                delete parse[0]
-                if (newachievements.includes(parse.join()) == false) {
-                    accounts[id]['achievements'].push(str)
-                }
-            }
-        }
-
-        ///////////////
-
-        // append to graph
-        var d = new Date()
-        accounts[id]['showers'].push([date(), num])
-        console.log('appended ' + [date(), num] + ' to ' + id + '\'s account')
-
-        if (accounts[id]['best'] < num) {
-            accounts[id]['best'] = num;
-        }
-
-        console.log(accounts[id]['email'] + ' just ended their shower')
+        regshower(id, num)
         syncdbwrite()
     });
 
@@ -223,7 +241,17 @@ io.on('connection', function(socket) {
     });
 
     socket.on('admin', function() {
+        console.log('connect')
         io.emit('adminreturn', accounts);
     });
 
+});
+
+app.post('/hard', function(req, res) {
+    var num = getParameterByName('num', req.originalUrl)
+    var id = getParameterByName('id', req.originalUrl)
+    console.log(num + ' is ' + id);
+    regshower(id, parseInt(num))
+    syncdbwrite()
+    res.send('good')
 });
