@@ -113,6 +113,15 @@ function date() {
     return d.getFullYear() + '/' + String(d.getMonth() + 1) + '/' + d.getDate()
 }
 
+function sortFunction(a, b) {
+    if (a[0] === b[0]) {
+        return 0;
+    }
+    else {
+        return (a[0] < b[0]) ? -1 : 1;
+    }
+}
+
 function regshower(id, num) {
     accounts[id]['tot'] += num
     console.log(id + ' got ' + num + '. Now at ' + accounts[id]['tot'])
@@ -243,6 +252,15 @@ io.on('connection', function(socket) {
     socket.on('admin', function() {
         console.log('connect')
         io.emit('adminreturn', accounts);
+    });
+
+    socket.on('getboard', function(sessionid) {
+        var parseaccounts = []
+        for(var i in accounts){
+            parseaccounts.push([accounts[i]['tot']/(accounts[i]['showers'].length), accounts[i]['email']])
+        }
+        parseaccounts = parseaccounts.sort(sortFunction).reverse().slice(0, 10)
+        io.emit('returnboard', parseaccounts, sessionid);
     });
 
 });
