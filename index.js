@@ -253,5 +253,5 @@ app.post('/hard', function(req, res) {
     console.log(num + ' is ' + id);
     regshower(id, parseInt(num))
     syncdbwrite()
-    res.send('good')
+    res.send('all good')
 });
