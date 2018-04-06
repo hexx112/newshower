@@ -99,15 +99,6 @@ function cap(text) {
     return text.charAt(0).toUpperCase() + text.slice(1);
 }
 
-//legacy function
-function DBsearch(childusername) {
-    return accounts[childusername]
-}
-
-function makeprofile(childusername, profile) {
-    accounts[childusername] = profile
-}
-
 function date() {
     var d = new Date();
     return d.getFullYear() + '/' + String(d.getMonth() + 1) + '/' + d.getDate()
@@ -213,9 +204,9 @@ io.on('connection', function(socket) {
             }
         }
         if (uniquemail == true) {
-            makeprofile(childusername, profile)
+            accounts[childusername] = profile
             console.log(accounts)
-            confirmmail(DBsearch(childusername)['email'], childusername)
+            confirmmail(accounts[childusername]['email'], childusername)
             io.emit('registerreturn', 'registered successfully')
         }
         syncdbwrite()
