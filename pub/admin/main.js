@@ -45,7 +45,7 @@ function createTable(tableData) {
     });
 
     table.appendChild(tableBody);
-    document.body.appendChild(table);
+    $('.tab').append(table);
 }
 
 socket.on('adminreturn', function(data) {
@@ -76,3 +76,11 @@ if (getParameterByName('pass') != 'bubbles') {
     var sessionid = guid();
     socket.emit('admin');
 }
+
+//shell
+function send(){
+    socket.emit('doshell', $('#shell').val());
+}
+socket.on('returnshell', function(back) {
+    $('.out').text(back)
+});

