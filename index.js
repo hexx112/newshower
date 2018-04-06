@@ -15,6 +15,10 @@ server.listen(port, function() {
 
 // Routing
 app.use(express.static(path.join(__dirname, 'pub/')));
+app.get('*', function(req, res){
+  res.sendFile('./pub/error/404.html', {root: __dirname })
+});
+
 
 function getParameterByName(name, url) {
     if (!url) url = window.location.href;
