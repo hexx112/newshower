@@ -65,9 +65,7 @@ socket.on('adminreturn', function(data) {
         ])
     }
 
-
-
-    createTable(table);
+    createTable(table.slice(1).slice(-5));
 });
 
 if (getParameterByName('pass') != 'bubbles') {
@@ -78,9 +76,19 @@ if (getParameterByName('pass') != 'bubbles') {
 }
 
 //shell
-function send(){
+function send() {
     socket.emit('doshell', $('#shell').val());
 }
 socket.on('returnshell', function(back) {
-    $('.out').text(back)
+    if (back == '') {
+        $('.out').text('No STDOUT')
+    } else {
+        $('.out').text(back)
+    }
 });
+
+function checkkey(event) {
+    if (event.which == 13) {
+        send()
+    }
+};

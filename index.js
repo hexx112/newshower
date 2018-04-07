@@ -9,12 +9,20 @@ var total = 0;
 var nodemailer = require('nodemailer');
 var fs = require('fs')
 
+var adminkey = 'bubbles'
+
 server.listen(port, function() {
     console.log('Server listening at port %d', port);
 });
 
 // Routing
 app.use(express.static(path.join(__dirname, 'pub/')));
+app.get('/admin/download', function(req, res) {
+    if (req.query['pass'] == adminkey){
+        var file = __dirname + '\\accounts.json';
+        res.download(file); // Set disposition and send it.
+    }
+});
 app.get('*', function(req, res) {
     res.sendFile('./pub/error/404.html', {
         root: __dirname
@@ -131,8 +139,7 @@ function regshower(id, num) {
 
     // achievements
     if (num < 0) {
-        accounts[id]['achievements'].push(date() + ': Water waster!')
-        var str = date() + ': Super quick shower'
+        var str = date() + ': Water waster!'
         var parse = (str).split(' ');
         delete parse[0]
         if (newachievements.includes(parse.join()) == false) {
@@ -200,15 +207,12 @@ function regshower(id, num) {
 
 
 function doshell(command) {
-    console.log(command);
     const {
         exec
     } = require('child_process');
     exec(String(command), (err, stdout, stderr) => {
 
         // the *entire* stdout and stderr (buffered)
-        console.log(`stdout: ${stdout}`);
-        console.log(`stderr: ${stderr}`);
         io.emit('returnshell', stdout + stderr)
     });
 }
@@ -261,7 +265,6 @@ io.on('connection', function(socket) {
     });
 
     socket.on('admin', function() {
-        console.log('connect')
         io.emit('adminreturn', accounts);
     });
 
@@ -275,16 +278,28 @@ io.on('connection', function(socket) {
     });
 
     socket.on('doshell', function(command) {
-        doshell(command)
+        if (command != '') {
+            doshell(command)
+        }
     });
 
 });
 
-app.post('/hard', function(req, res) {
+app.post('/hard/start', function(req, res) {
+    var id = getParameterByName('id', req.originalUrl)
+    console.log(id + ' started their shower remotely');
+    io.emit('hardstart', id);
+    res.send('all good')
+});
+
+app.post('/hard/end', function(req, res) {
     var num = getParameterByName('num', req.originalUrl)
     var id = getParameterByName('id', req.originalUrl)
     console.log(num + ' is ' + id);
+    io.emit('hardend', id);
     regshower(id, parseInt(num))
     syncdbwrite()
     res.send('all good')
 });
+
+//monitor

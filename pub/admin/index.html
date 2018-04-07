@@ -15,13 +15,18 @@
 	<script type="text/javascript" src="main.js"></script>
 	<div class="tab"></div>
 	<div class="row">
-		<div class="input-field col s6">
-			<input placeholder="command" id="shell" type="text" class="validate">
+		<a id='shellsend' class="btn-floating btn-large waves-effect waves-light red" href='../admin/download?pass=bubbles'><i class="material-icons">cloud_download</i></a>
+		<span>Download accounts</span>
+	</div>
+	<hr><br>
+	<div class="row">
+		<div class="input-field col s11">
+			<input placeholder="command" onkeypress="checkkey(event)" id="shell" type="text" class="validate">
 			<label for="title">shell</label>
 		</div>
-		<a class="btn-floating btn-large waves-effect waves-light red" onclick="send()"><i class="material-icons">send</i></a>
+		<a id='shellsend' class="btn-floating btn-large waves-effect waves-light red" onclick="send()"><i class="material-icons">send</i></a>
 	</div>
-	<div class="out"></div>
+	<div class="out">&zwnj;&zwnj;&zwnj;&zwnj;</div>
 	<style media="screen">
 		body {
 			margin: 10px;
@@ -30,6 +35,7 @@
 		.out {
 			background: black;
 			color: green;
+			padding: 10px;
 		}
 	</style>
 </body>
