@@ -91,7 +91,8 @@ socket.on('getstatsreturn', function(notyoursessionid, data) {
 
         full += '</ul>'
 
-        constructgraph(data['showers'])
+        var showers = data['showers'].slice(1).slice(-10)
+        constructgraph(showers)
 
         $("#stats").append(full)
     }

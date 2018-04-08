@@ -73,17 +73,17 @@ function start() {
 
 function end() {
     clearInterval(intervalID)
+    intervalID = undefined;
     $("#end").addClass("disabled");
     $("#start").removeClass("disabled");
 
-    $("#count").prepend("You got: ");
+    $("#count").prepend("");
 
     send(num)
     getstats()
 }
 
 function makergb(r, g, b) {
-    console.log(r, g, b);
     $('.fade').css("background", "rgb(" + r + ", " + g + ", " + b + ")");
 }
 
@@ -94,19 +94,32 @@ function showerticker() {
 }
 
 //hardware socket fires
+var hardshower = false
 socket.on('hardstart', function(notyourid) {
     if (id == notyourid) {
-        $('#start').addClass('disabled')
-        intervalID = window.setInterval(showerticker, speed);
-        num = orgnum
-        $("#count").html(num);
+        if (intervalID == undefined) {
+            $('#start').addClass('disabled')
+            intervalID = window.setInterval(showerticker, speed);
+            num = orgnum
+            $("#count").html(num);
+            hardshower = true
+            console.log('start');
+        } else {
+            console.log('its undefined');
+            hardshower = false
+        }
     }
 });
 
 socket.on('hardend', function(notyourid) {
     if (id == notyourid) {
-        $('#start').removeClass('disabled')
-        clearInterval(intervalID)
-        getstats()
+        if (hardshower == true) {
+            $('#start').removeClass('disabled')
+            clearInterval(intervalID)
+            intervalID = undefined;
+            getstats()
+            hardshower = false
+            console.log('end');
+        }
     }
 });

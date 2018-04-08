@@ -287,6 +287,11 @@ io.on('connection', function(socket) {
 
 app.post('/hard/start', function(req, res) {
     var id = getParameterByName('id', req.originalUrl)
+    for (var i in accounts) {
+        if (accounts[i]['email'] == id) {
+            id = i;
+        }
+    }
     console.log(id + ' started their shower remotely');
     io.emit('hardstart', id);
     res.send('all good')
@@ -295,11 +300,14 @@ app.post('/hard/start', function(req, res) {
 app.post('/hard/end', function(req, res) {
     var num = getParameterByName('num', req.originalUrl)
     var id = getParameterByName('id', req.originalUrl)
+    for (var i in accounts) {
+        if (accounts[i]['email'] == id) {
+            id = i;
+        }
+    }
     console.log(num + ' is ' + id);
     io.emit('hardend', id);
     regshower(id, parseInt(num))
     syncdbwrite()
     res.send('all good')
 });
-
-//monitor
