@@ -1,0 +1,55 @@
+<html>
+
+<body>
+
+  <div class="parent">
+    <link rel="stylesheet" type="text/css" href="style.css">
+    <script src="/socket.io/socket.io.js"></script>
+    <script src="https://code.jquery.com/jquery-1.11.1.js"></script>
+
+    <!-- Compiled and minified CSS -->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
+    <!-- Compiled and minified JavaScript -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/js/materialize.min.js"></script>
+    <script src='main.js'></script>
+
+    <div class="child">
+      <h1>ToS</h1>
+      <ul>
+        <li>You agree to leave your body to Master Lewis Carson upon your death.</li>
+        <li>You agree to give Master Lewis Carson your first born child.</li>
+        <li>You agree to disagree.</li>
+        <li>Every other fourth member who joins will be tracked down with hunters and dogs and shot.</li>
+        <li>There is no fifth law.</li>
+        <li>If two systems are in thermal equilibrium with a third system, they are in thermal equilibrium with each other. This law helps define the concept of temperature.</li>
+        <li>Number 8 is wrong</li>
+        <li>Number 7 is right</li>
+        <li>Every third law in this list does not apply.</li>
+        <li>Do NOT tick the box below if you agree</li>
+      </ul>
+      <input type="checkbox" name="vehicle" value="Car">I have read the rules.
+    </div>
+  </div>
+  <style>
+    body {
+      height: 100%;
+      font-family: "Comic Sans MS", "Comic Sans", cursive;
+    }
+
+    .parent {
+      height: 100%;
+      position: relative;
+    }
+
+    .child {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+    }
+  </style>
+
+</body>
+
+</html>
