@@ -271,6 +271,9 @@ io.on('connection', function(socket) {
     socket.on('getboard', function(sessionid) {
         var parseaccounts = []
         for (var i in accounts) {
+            if(accounts[i]['showers'].length == 0){
+                continue
+            }
             parseaccounts.push([accounts[i]['tot'] / (accounts[i]['showers'].length), accounts[i]['email']])
         }
         parseaccounts = parseaccounts.sort(sortFunction).reverse().slice(0, 10)
