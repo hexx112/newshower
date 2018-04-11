@@ -46,4 +46,5 @@ socket.on('returnboard', function(board, notyoursessionid) {
         createTable(board)
         called = true
     }
+    
 });
