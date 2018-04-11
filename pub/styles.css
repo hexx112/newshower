@@ -1,0 +1,62 @@
+
+
+.inline {
+  display: inline;
+}
+
+.page1 {
+  position: relative;
+}
+
+.page1-inner {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.page1,
+.page2,
+.right,
+.left {
+  height: 100%;
+  text-align: center;
+}
+
+.right,
+.left {
+  width: 50%;
+  /*line-height: 50%;*/
+  position: relative;
+}
+
+.right-inner,
+.left-inner {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.right:hover,
+.left:hover {
+  background-color: #eeeeee;
+
+  -webkit-transition: all 1s ease-in-out;
+  -moz-transition: all 1s ease-in-out;
+  -o-transition: all 1s ease-in-out;
+  transition: all 1s ease-in-out;
+}
+
+html,
+body {
+  margin: 0;
+  height: 100%;
+  overflow: hidden;
+}
+
+ @media screen and (orientation:portrait) {
+    /* For mobile phones: */
+    background-color: blue;
+
+}

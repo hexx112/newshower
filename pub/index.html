@@ -1,102 +1,49 @@
 <html>
 
 <body>
-    <script src="/socket.io/socket.io.js"></script>
-    <script src="https://code.jquery.com/jquery-1.11.1.js"></script>
-    <!-- Compiled and minified CSS -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/css/materialize.min.css">
-    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-    <!-- Compiled and minified JavaScript -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/js/materialize.min.js"></script>
+  <script src="/socket.io/socket.io.js"></script>
+  <script src="https://code.jquery.com/jquery-1.11.1.js"></script>
+  <!-- Compiled and minified CSS -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/css/materialize.min.css">
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <link href="styles.css" rel="stylesheet">
+  <!-- Compiled and minified JavaScript -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/js/materialize.min.js"></script>
 
+  <div class="page1">
+    <div class="page1-inner">
 
-    <div class="page1">
-        <div class="page1-inner">
-            <h1>SiM</h1>
-            <h2>v2.0.0</h2>
+      <h1>SiM</h1>
+      <h2>v2.0.0</h2>
 
-            <p>Helping save the environment. One step at a time.</p>
+      <p>Helping save the environment. One step at a time.</p>
 
-            <a class="btn-floating btn-large waves-effect waves-light scroll1"><i class="material-icons">arrow_downward</i></a>
-        </div>
+      <a class="btn-floating btn-large waves-effect waves-light scroll1"><i class="material-icons">arrow_downward</i></a>
     </div>
-    <div class="page2">
-        <div class="left col s6">
-            <div class="left-inner">
-                <a href="login" class="btn-floating btn-large waves-effect waves-light"><i class="material-icons">arrow_back</i></a>
-                <br>
-                <p>I have an account</p>
-                <br><br>
-                <a href="register" class="btn-floating btn-large waves-effect waves-light"><i class="material-icons">arrow_back</i></a>
-                <br>
-                <p>I do not have an account</p>
-            </div>
-        </div>
-        <div class="right col s6">
-            <div class="right-inner">
-                <br><br>
-                <a href="team" class="btn-floating btn-large waves-effect waves-light"><i class="material-icons">arrow_forward</i></a>
-                <br>
-                <p>Meet the team</p>
-            </div>
-        </div>
+  </div>
+  <div class="page2">
+    <div class="left col s6">
+      <div class="left-inner">
+        <a href="login" class="btn-floating btn-large waves-effect waves-light"><i class="material-icons">arrow_back</i></a>
+        <br>
+        <p>I have an account</p>
+        <br><br>
+        <a href="register" class="btn-floating btn-large waves-effect waves-light"><i class="material-icons">arrow_back</i></a>
+        <br>
+        <p>I do not have an account</p>
+      </div>
     </div>
+    <div class="right col s6">
+      <div class="right-inner">
+        <br><br>
+        <a href="team" class="btn-floating btn-large waves-effect waves-light"><i class="material-icons">arrow_forward</i></a>
+        <br>
+        <p>Meet the team</p>
+      </div>
+    </div>
+  </div>
 
-    <style media="screen">
-    .inline{display: inline;}
-        .page1 {
-            position: relative;
-        }
-
-        .page1-inner {
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-        }
-
-        .page1,
-        .page2,
-        .right,
-        .left {
-            height: 100%;
-            text-align: center;
-        }
-
-        .right,
-        .left {
-            width: 50%;
-            /*line-height: 50%;*/
-            position: relative;
-        }
-
-        .right-inner,
-        .left-inner {
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-        }
-
-        .right:hover,
-        .left:hover {
-            background-color: #eeeeee;
-
-            -webkit-transition: all 1s ease-in-out;
-            -moz-transition: all 1s ease-in-out;
-            -o-transition: all 1s ease-in-out;
-            transition: all 1s ease-in-out;
-        }
-
-        html,
-        body {
-            margin: 0;
-            height: 100%;
-            overflow: hidden
-        }
-    </style>
-
-    <script src='main.js'></script>
+  <script src='main.js'></script>
 </body>
 
 </html>
