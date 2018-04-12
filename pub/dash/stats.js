@@ -110,3 +110,7 @@ window.onload = function() {
 };
 
 getstats()
+
+function updatethresh(){
+  socket.emit('updatethresh', id, up, down)
+}

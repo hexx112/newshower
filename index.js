@@ -286,6 +286,11 @@ io.on('connection', function(socket) {
         }
     });
 
+    socket.on('updatethresh', function(id, up, down) {
+        showers[id]['downer'] = down
+        showers[id]['upper'] = up
+    });
+
 });
 
 app.post('/hard/start', function(req, res) {

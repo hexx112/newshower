@@ -2,30 +2,40 @@
 
 <body>
 
-    <script src='https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.2/Chart.bundle.js'></script>
-    <link rel="stylesheet" type="text/css" href="style.css">
-    <script src="/socket.io/socket.io.js"></script>
-    <script src="https://code.jquery.com/jquery-1.11.1.js"></script>
-    <script src='stats.js'></script>
+  <script src='https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.2/Chart.bundle.js'></script>
+  <link rel="stylesheet" type="text/css" href="style.css">
+  <script src="/socket.io/socket.io.js"></script>
+  <script src="https://code.jquery.com/jquery-1.11.1.js"></script>
+  <script src='stats.js'></script>
 
-    <!-- Compiled and minified CSS -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/css/materialize.min.css">
+  <!-- Compiled and minified CSS -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/css/materialize.min.css">
 
-    <!-- Compiled and minified JavaScript -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/js/materialize.min.js"></script>
+  <!-- Compiled and minified JavaScript -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/js/materialize.min.js"></script>
 
-    <div class="row hide-on-small-only">
-        <div class="col s5">
-            <p id="stats">
+  <div class="row hide-on-small-only">
+    <div class="col s5">
+      <p id="stats">
 
-            </p>
-        </div>
-        <div class="col s5">
-            <canvas id="showerlength" width="400" height="200"></canvas>
-            <a href='../board/' class="waves-effect waves-light btn-large">Leaderboard</a>
-        </div>
+      </p>
     </div>
+    <div class="col s5">
+      <canvas id="showerlength" width="400" height="200"></canvas>
+      <a href='../board/' class="waves-effect waves-light btn-large">Leaderboard</a>
+    </div>
+  </div>
 
+  <div class="row hide-on-small-only">
+    <div class="col s1">
+      <input type="number" value='500'/>
+      <p>upper threshhold</p>
+    </div>
+    <div class="col s1">
+      <input type="number" value='-500'/>
+      <p>lower threshhold</p>
+    </div>
+  </div>
 
 </body>
 
