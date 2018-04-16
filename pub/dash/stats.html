@@ -7,6 +7,7 @@
   <script src="/socket.io/socket.io.js"></script>
   <script src="https://code.jquery.com/jquery-1.11.1.js"></script>
   <script src='stats.js'></script>
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 
   <!-- Compiled and minified CSS -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/css/materialize.min.css">
@@ -24,17 +25,12 @@
       <canvas id="showerlength" width="400" height="200"></canvas>
       <a href='../board/' class="waves-effect waves-light btn-large">Leaderboard</a>
     </div>
-  </div>
-
-  <div class="row hide-on-small-only">
-    <div class="col s1">
-      <input type="number" value='500'/>
-      <p>upper threshhold</p>
-    </div>
-    <div class="col s1">
-      <input type="number" value='-500'/>
-      <p>lower threshhold</p>
-    </div>
+    <style>
+      .collection-item {
+        white-space: pre;
+        font-family: monospace;
+      }
+    </style>
   </div>
 
 </body>

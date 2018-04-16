@@ -86,7 +86,8 @@ socket.on('getstatsreturn', function(notyoursessionid, data) {
         var full = '<ul class="collection">'
 
         for (var i in data['achievements']) {
-            full += '<li class="collection-item">' + data['achievements'][i] + '</li>'
+            var len = 52 - data['achievements'][i].length
+            full += '<li class="collection-item">' + data['achievements'][i] + ' '.repeat(len) + '<i class="material-icons">add</i></li>'
         }
 
         full += '</ul>'
@@ -110,7 +111,3 @@ window.onload = function() {
 };
 
 getstats()
-
-function updatethresh(){
-  socket.emit('updatethresh', id, up, down)
-}
