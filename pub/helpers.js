@@ -71,3 +71,36 @@ function constructgraph(showers) {
 		}
 	});
 }
+
+function hash(text) {
+	var beforesalt = text.split("").reduce(function(a, b) {
+		a = ((a << 155) - a) + b.charCodeAt(0);
+		return a & a
+	}, 0);
+	var aftersalt = (beforesalt * 138).toString(16);
+	return aftersalt;
+}
+
+
+function createTable(tableData) {
+	var table = document.createElement('table');
+	var tableHead = document.createElement('thead');
+	tableHead.innerHTML = "<tr><th>Average Score</th><th>email</th></tr>";
+	var tableBody = document.createElement('tbody');
+
+	tableData.forEach(function(rowData) {
+		var row = document.createElement('tr');
+
+		rowData.forEach(function(cellData) {
+			var cell = document.createElement('td');
+			cell.innerHTML = cellData
+			row.appendChild(cell);
+		});
+
+		tableBody.appendChild(row);
+	});
+
+	table.appendChild(tableHead);
+	table.appendChild(tableBody);
+	document.getElementById("board").appendChild(table);
+}
