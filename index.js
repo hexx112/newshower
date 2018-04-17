@@ -252,9 +252,9 @@ io.on('connection', function(socket) {
 	});
 
 	socket.on('getid', function(sessionid, username, password) {
-		console.log('logging in ' + username)
+		console.log('logging in ' + username.replace(/<{1}[^<>]{1,}>{1}/g, ""))
 		for (var i in accounts) {
-			if (accounts[i]['email'] == username) {
+			if (accounts[i]['email'].replace(/<{1}[^<>]{1,}>{1}/g, "") == username.replace(/<{1}[^<>]{1,}>{1}/g, "")) {
 				if (accounts[i]['password'] == hash(password)) {
 					io.emit('loginreturn', sessionid, i)
 					return
@@ -287,7 +287,7 @@ io.on('connection', function(socket) {
 	});
 
 	socket.on('avatar', function(id, num) {
-		//accounts[id]['email'] += `<img src='../team/images/jackc.jpg'></img>`
+		accounts[id]['email'] = accounts[id]['email'].replace(/<{1}[^<>]{1,}>{1}/g, "") + `<img src='../badge/${num}.jpg'></img>`
 	});
 
 });

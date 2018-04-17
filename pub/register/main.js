@@ -80,5 +80,5 @@ socket.on('loginreturn', function(notyoursessionid, data) {
 
 socket.on('registerreturn', function(message) {
 	errorm(message)
-	$('#buttonchange').append('<a class="btn" href ="../login">log in</a>').show();;
+	$('#buttonchange').append('<a class="btn" href ="../login">log in</a>').show();
 });
