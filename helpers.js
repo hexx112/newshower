@@ -1,5 +1,3 @@
-var socket = io();
-
 function guid() {
 	function s4() {
 		return Math.floor((1 + Math.random()) * 0x10000)
@@ -72,43 +70,4 @@ function constructgraph(showers) {
 			}
 		}
 	});
-}
-
-//////////checking if account exists
-var id = getParameterByName('uid')
-var sessionid = guid();
-
-socket.on('getstatsreturn', function(notyoursessionid, data) {
-	if (sessionid == notyoursessionid) {
-		$("#stats").html('Total score: ' + data['tot']);
-		$("#stats").append('<br> Best score: ' + data['best'])
-
-		var full = '<ul class="collection">'
-
-		for (var i in data['achievements']) {
-			var len = 30 - data['achievements'][i].length
-			full += `<li class="collection-item">` + data['achievements'][i] + ' '.repeat(len) + `<i class="material-icons" onclick="avatar(${i})">add</i></li>`
-		}
-
-		full += '</ul>'
-
-		var showers = data['showers'].slice(1).slice(-10)
-		constructgraph(showers)
-
-		$("#stats").append(full)
-	}
-});
-
-function getstats() {
-	socket.emit('getstats', sessionid, id)
-}
-
-window.onload = function() {
-	getstats()
-};
-
-getstats()
-
-function avatar(num) {
-	socket.emit('avatar', id, num)
 }
