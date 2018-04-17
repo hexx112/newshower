@@ -223,7 +223,7 @@ io.on('connection', function(socket) {
 		var uniquemail = true;
 		for (var i in accounts) {
 			if (accounts[i]['email'] == profile['email']) {
-				io.emit('registerreturn', 'Please use a unique email adress.')
+				io.emit('registerreturn', 'Please use a unique email adress.', false)
 				var uniquemail = false;
 			}
 		}
@@ -231,7 +231,7 @@ io.on('connection', function(socket) {
 			accounts[childusername] = profile
 			console.log(accounts)
 			confirmmail(accounts[childusername]['email'], childusername)
-			io.emit('registerreturn', 'registered successfully')
+			io.emit('registerreturn', 'registered successfully', true)
 		}
 		syncdbwrite()
 	});

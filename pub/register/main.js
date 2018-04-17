@@ -1,8 +1,5 @@
 var socket = io();
-
-
-
-
+var doneregister = false;
 var sessionid = guid();
 
 function readbox(id) {
@@ -48,7 +45,10 @@ function register() {
 	});
 }
 
-socket.on('registerreturn', function(message) {
+socket.on('registerreturn', function(message, did) {
 	errorm(message)
-	$('#buttonchange').append('<a class="btn" href ="../login">log in</a>').show();
+	if (doneregister == false) {
+		$('#buttonchange').append('<a class="btn" href ="../login">log in</a>').show();
+	}
+	doneregister = true;
 });
