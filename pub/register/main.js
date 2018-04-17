@@ -64,20 +64,6 @@ function register() {
 	});
 }
 
-function signin() {
-	socket.emit('getid', sessionid, readbox('childusernamelogin'), readbox('passwordlogin'));
-}
-
-socket.on('loginreturn', function(notyoursessionid, data) {
-	if (data.length != 28) {
-		errorm(data)
-		return
-	}
-	if (sessionid == notyoursessionid) {
-		window.location = "http://" + window.location.host + '/dash/dashboard.html?uid=' + data;
-	}
-});
-
 socket.on('registerreturn', function(message) {
 	errorm(message)
 	$('#buttonchange').append('<a class="btn" href ="../login">log in</a>').show();

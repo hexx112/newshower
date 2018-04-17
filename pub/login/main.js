@@ -29,22 +29,6 @@ function errorm(message) {
 	$('#errorm').text(message)
 }
 
-function register() {
-	var id = guid()
-	if (readbox('password') != readbox('confirmpassword')) {
-		errorm('Passwords do not match')
-		return
-	}
-	socket.emit('register', id, {
-		"password": hash(readbox('password')),
-		"email": readbox('email'),
-		"confirmedemail": false,
-		"children": {
-
-		}
-	});
-}
-
 function signin() {
 	socket.emit('getid', sessionid, readbox('childusernamelogin'), readbox('passwordlogin'));
 }
@@ -57,8 +41,4 @@ socket.on('loginreturn', function(notyoursessionid, data) {
 	if (sessionid == notyoursessionid) {
 		window.location = "http://" + window.location.host + '/dash/dashboard.html?uid=' + data;
 	}
-});
-
-socket.on('registerreturn', function(message) {
-	errorm(message)
 });
