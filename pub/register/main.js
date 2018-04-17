@@ -48,7 +48,9 @@ function register() {
 socket.on('registerreturn', function(message, did) {
 	errorm(message)
 	if (doneregister == false) {
-		$('#buttonchange').append('<a class="btn" href ="../login">log in</a>').show();
+		if (did = true) {
+			$('#buttonchange').append('<a class="btn" href ="../login">log in</a>').show();
+		}
 	}
 	doneregister = true;
 });
