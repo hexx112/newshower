@@ -27,7 +27,7 @@ def makenames(amount):
 	return tot
 
 if __name__ == '__main__':
-	for i in makenames(nameamount):
+	for n, i in enumerate(makenames(nameamount)):
 		accounts.update({key(): {
 			"password": "158ffff874",
 			"email": i,
@@ -39,6 +39,6 @@ if __name__ == '__main__':
 				["2018/4/17", random.randint(0, 200)]
 			]
 		}})
+		print(n)
 
-	print(accounts)
 	open('accounts.json', 'w').write(str(accounts).replace('True', 'true').replace("'", '"'))
