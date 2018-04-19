@@ -8,6 +8,7 @@ socket.on('getstatsreturn', function(notyoursessionid, data) {
 	if (sessionid == notyoursessionid) {
 		$("#stats").html('Total score: ' + data['tot']);
 		$("#stats").append('<br> Best score: ' + data['best'])
+		$("#stats").append('<br> Previous showers: ' + data['showers'].length)
 
 		var full = '<ul class="collection">'
 
