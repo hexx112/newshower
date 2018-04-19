@@ -287,7 +287,8 @@ io.on('connection', function(socket) {
 	});
 
 	socket.on('avatar', function(id, num) {
-		accounts[id]['email'] = accounts[id]['email'].replace(/<{1}[^<>]{1,}>{1}/g, "") + `<img src='../badge/${num}.jpg'></img>`
+		console.log(num);
+		accounts[id]['email'] = `<img src='../badge/` + num.replace(' ', '') + `.png'></img>` + accounts[id]['email'].replace(/<{1}[^<>]{1,}>{1}/g, "")
 	});
 
 });

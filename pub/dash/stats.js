@@ -13,10 +13,15 @@ socket.on('getstatsreturn', function(notyoursessionid, data) {
 
 		for (var i in data['achievements']) {
 			var len = 30 - data['achievements'][i].length;
-			var sli = data['achievements'][i];
+			var sli = data['achievements'][i].split(':')[1].slice(0, 4).toLowerCase().replace(" ", "")
 			console.log(sli);
-			full += `<li class="collection-item">` + data['achievements'][i] + ' '.repeat(len) + `<i class="material-icons" onclick="avatar('${sli}')">add</i></li>`
+			if (sli != 'cre') {
+				full += `<li class="collection-item">` + data['achievements'][i] + ' '.repeat(len) + `<i class="material-icons" onclick="avatar('${sli}')">add</i>` + `<img src='../badge/` + sli.replace(' ', '') + `.png'></img>` + '</li>'
+			} else {
+				full += `<li class="collection-item">` + data['achievements'][i] + ' '.repeat(len)
+			}
 		}
+
 
 		full += '</ul>'
 
