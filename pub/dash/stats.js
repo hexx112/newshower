@@ -12,8 +12,10 @@ socket.on('getstatsreturn', function(notyoursessionid, data) {
 		var full = '<ul class="collection">'
 
 		for (var i in data['achievements']) {
-			var len = 30 - data['achievements'][i].length
-			full += `<li class="collection-item">` + data['achievements'][i] + ' '.repeat(len) + `<i class="material-icons" onclick="avatar(${i})">add</i></li>`
+			var len = 30 - data['achievements'][i].length;
+			var sli = data['achievements'][i];
+			console.log(sli);
+			full += `<li class="collection-item">` + data['achievements'][i] + ' '.repeat(len) + `<i class="material-icons" onclick="avatar('${sli}')">add</i></li>`
 		}
 
 		full += '</ul>'
