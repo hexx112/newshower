@@ -1,5 +1,6 @@
 import names
 import random
+import os
 
 mail = ['gmail.com', 'zoho.co.uk', 'outlook.co.uk', 'yahoo.net', 'hotmail.co.uk']
 nameamount = int(input())
@@ -30,7 +31,7 @@ if __name__ == '__main__':
 	for n, i in enumerate(makenames(nameamount)):
 		accounts.update({key(): {
 			"password": "158ffff874",
-			"email": i,
+			"email": "<img src=../badge/"+random.choice(os.listdir('pub/badge'))+"></img>" + i,
 			"confirmedemail": True,
 			"tot": random.randint(0, 200),
 			"best": 499,
@@ -39,6 +40,5 @@ if __name__ == '__main__':
 				["2018/4/17", random.randint(0, 200)]
 			]
 		}})
-		print(n)
 
 	open('accounts.json', 'w').write(str(accounts).replace('True', 'true').replace("'", '"'))

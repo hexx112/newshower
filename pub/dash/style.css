@@ -14,3 +14,10 @@
     transform: translate(-50%, -50%);
     text-align: center;
 }
+
+img{
+	vertical-align: middle;
+	margin-right: 10px;
+	width: 75px;
+	height: 75px;
+}

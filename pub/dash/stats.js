@@ -8,13 +8,21 @@ socket.on('getstatsreturn', function(notyoursessionid, data) {
 	if (sessionid == notyoursessionid) {
 		$("#stats").html('Total score: ' + data['tot']);
 		$("#stats").append('<br> Best score: ' + data['best'])
+		$("#stats").append('<br> Previous showers: ' + data['showers'].length)
 
 		var full = '<ul class="collection">'
 
 		for (var i in data['achievements']) {
-			var len = 30 - data['achievements'][i].length
-			full += `<li class="collection-item">` + data['achievements'][i] + ' '.repeat(len) + `<i class="material-icons" onclick="avatar(${i})">add</i></li>`
+			var len = 30 - data['achievements'][i].length;
+			var sli = data['achievements'][i].split(':')[1].slice(0, 4).toLowerCase().replace(" ", "")
+			console.log(sli);
+			if (sli != 'cre') {
+				full += `<li class="collection-item">` + data['achievements'][i] + ' '.repeat(len) + `<i class="material-icons" onclick="avatar('${sli}')">add</i>` + `<img src='../badge/` + sli.replace(' ', '') + `.png'></img>` + '</li>'
+			} else {
+				full += `<li class="collection-item">` + data['achievements'][i] + ' '.repeat(len)
+			}
 		}
+
 
 		full += '</ul>'
 
