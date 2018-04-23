@@ -295,6 +295,7 @@ io.on('connection', function(socket) {
 
 app.post('/hard/start', function(req, res) {
 	var id = getParameterByName('id', req.originalUrl)
+	console.log(id)
 	for (var i in accounts) {
 		if (accounts[i]['email'] == id) {
 			id = i;
